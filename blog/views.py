@@ -1,4 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import Post
+
+
 def posts_list(request):
-    return HttpResponse('<h1>Mike T. Blog<h1>'.center(50))
+    posts = Post.objects.all()
+    return render(request, 'blog/index.html', context={'posts':posts})
+
+def post_detail(request, slug):
+    post = Post.objects.get(slug__exact=slug)
+    return render(request, 'blog/post_detail.html', context={'post':post})
