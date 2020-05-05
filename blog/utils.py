@@ -14,7 +14,11 @@ class ObjectDetailMixin:
         return render(
             request,
             self.template,
-            context={self.model.__name__.lower(): obj}
+            context={
+                self.model.__name__.lower(): obj,
+                'admin_object': obj,
+                'detail': True,
+            }
         )
 
 
