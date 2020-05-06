@@ -69,7 +69,7 @@ def posts_list(request):
     return render(
         request,
         'blog/index.html',
-        context={'posts': page}
+        context={'page_object': page}
     )
 
 
